@@ -1,0 +1,90 @@
+swagger: "2.0"
+info:
+  description: "Repositories api."
+  version: "1.0.0"
+  title: "TUI Task service"
+  contact:
+    email: "akshay.9284570124@gmail.com"
+tags:
+- name: "task"
+  description: "get all repos"
+schemes:
+- "https"
+- "http"
+paths:
+  /task/{username}:
+    get:
+      tags:
+      - "task"
+      summary: "Get all forked / non-forked repos"
+      description: "Get forked and non-forked repos"
+      operationId: "getRepos"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "fork"
+        in: "query"
+        description: "fork = true [ for forked repo ] | fork = false [ for non-forked repo ]"
+        required: false
+        type: "array"
+        items:
+          type: "boolean"
+          enum:
+          - true
+          - false
+          default: false
+        collectionFormat: "multi"
+      - name: "username"
+        in: "path"
+        description: "git username"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/RepoDetails"
+        "404":
+          description: "User not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ErrorResponse"
+        "403":
+          description: "Only Accept: application/json accepted"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ErrorResponse"
+definitions:
+  BranchInfo: 
+    type: "object"
+    properties:
+      name: 
+        type: "string"
+      sha:
+        type: "string"
+  RepoDetails:
+    type: "object"
+    properties:
+      name: 
+        type: "string"
+      ownerLogin: 
+        type: "string"
+      branches: 
+        type: "array"
+        items:
+          type: "object"
+          $ref: '#/definitions/BranchInfo'
+  ErrorResponse:
+    type: "object"
+    properties:
+      status: 
+        type: "string"
+      message:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

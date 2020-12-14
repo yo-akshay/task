@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "24e229ea-02df-43f3-9980-db73f8d52a42",
+		"name": "TUI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list user repositories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/users/iamdaniele/repos",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"users",
+						"iamdaniele",
+						"repos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list branches",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/repos/iamdaniele/bounding-boxes/branches",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"repos",
+						"iamdaniele",
+						"bounding-boxes",
+						"branches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get repo info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/task/iamdaniele",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"task",
+						"iamdaniele"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
